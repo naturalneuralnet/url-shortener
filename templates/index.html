@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<head>
+  <script
+    src="https://code.jquery.com/jquery-3.7.1.min.js"
+    integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+    crossorigin="anonymous"
+  ></script>
+  <!-- <link rel="stylesheet" type="text/css" href="styles.css"/> -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+  />
+  <style>
+@import url("https://fonts.googleapis.com/css2?family=Lilita+One&display=swap");
+
+section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+
+form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+body {
+  min-height: 97vh;
+  font-family: "Lilita One", sans-serif;
+  line-height: 1.5;
+  color: #111;
+  /* background-color: #006b80; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: linear-gradient(
+    to top,
+    #051937,
+    #004d7a,
+    #008793,
+    #00bf72,
+    #a8eb12
+  );
+}
+
+main {
+  max-width: 720px;
+  width: 100%;
+  border: 2.5px solid #330867;
+  border-radius: 2.5px;
+  box-shadow: 0 10px 20px rgba(17, 17, 17, 0.125),
+    0 5px 5px rgba(17, 17, 17, 0.25);
+  background-color: #00a97f;
+ 
+}
+
+h1 {
+  padding: 1rem;
+  color: white;
+  text-align: center;
+  
+}
+
+h1:hover {
+  animation: pulse; /* referring directly to the animation's @keyframe declaration */
+  animation-duration: 3s ; /* don't forget to set a duration! */
+  cursor: pointer;
+}
+
+a {
+  text-decoration: none;
+  color: #a8eb12;
+}
+
+input {
+  box-sizing: border-box;
+  width: 80%;
+  background-color: rgb(48, 66, 163);
+  height: 30px;
+  color: whitesmoke;
+  text-align: center;
+  box-shadow:0 0 15px 4px rgba(0,0,0,0.06);
+  border: 0;
+}
+
+.buttons {
+  display: flex;
+}
+
+button {
+  cursor: pointer;
+  flex: 1;
+  background-color: transparent;
+  color: white;
+  font-size: large;
+  &:hover {
+    background-color: rgba(109, 212, 88, 0.5);
+  };
+  font-family: inherit;
+  line-height: inherit;
+  border: 0;
+  padding: 1rem;
+}
+
+
+  </style>
+  <title>URL SHORTNER</title>
+</head>
+<body >
+  <main>
+    <h1 class="animate__pulse">URL SHORTNER</h1>
+    <form id="post-form">
+      {% csrf_token %}
+      <input type="text" name="link" id="link" placeholder="Enter URL here"  />
+      <div class="buttons">
+        <button type="submit" id="shorten" >Shorten</button>
+      </div>
+    </form>
+
+    <section id="section">
+      <a href=""></a>
+    </section>
+    
+  </main>
+</body>
+
+<script type="text/javascript">
+  /* // this is called on the submit of post form, the # denotes the attribute name */
+  $(document).on("submit", "#post-form", function (e) {
+    /* /// prevents reloading */
+    e.preventDefault();
+
+    /* // using ajax */
+    $.ajax({
+      type: "POST",
+      url: "/shorten",
+      data: {
+        link: $("#link").val(),
+        csrfmiddlewaretoken: $("input[name=csrfmiddlewaretoken]").val(),
+      },
+      success: function (data) {
+        $("a").html("localhost:8000/" + data);
+        $("a").prop("href", "localhost:8000/" + data);
+        console.log("Succeeded");
+      },
+    });
+  });
+
+ 
+</script>
