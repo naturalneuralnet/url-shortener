@@ -3,6 +3,11 @@
 
 A URL shortner in with Python and Django Web Framework.
 
+## Table of Contents
+
+- [Local Setup](#local-setup)
+- [What I learned](#what-i-learned)
+- [License](#license)
 
 ## Local Setup
 
@@ -26,6 +31,6 @@ Run the server with `python manage.py runserver`
 
 ## License
 
-You can find the License for this project here
+You can find the License for this project [here](LICENSE.md)
 
 This project is licensed under the terms of the MIT license.
