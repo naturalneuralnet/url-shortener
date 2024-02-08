@@ -1,7 +1,7 @@
 
 ## About
 
-A URL shortner in with Python and Django Web Framework.
+A URL shortener with Python and the Django Web Framework.
 
 ## Table of Contents
 
@@ -13,7 +13,7 @@ A URL shortner in with Python and Django Web Framework.
 
 Install Python 3.7
 
-Reccommend creating a python virtual enviroment.
+Recommend creating a python virtual environment.
 
 Clone/Download the Repository
 
@@ -23,7 +23,7 @@ Run the server with `python manage.py runserver`
 
 ## What I learned
 
-- How to set up django.
+- How to set up Django.
 - How to create Django models.
 - How to create Django endpoints.
 - How to use jquery to submit information to a Django endpoint.
