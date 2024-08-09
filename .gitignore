@@ -3,3 +3,10 @@
 image.png
 Notes.md
 mtv-django.png
+.env
+*.pyc
+__pycache__
+db.sqlite3
+/env
+*.env
+.vscode
